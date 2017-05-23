@@ -1,0 +1,40 @@
+<div class="head">
+    <div class="headerobjectswrapper">
+        <div class="weatherforcastbox"><span style="font-style: italic;">Weatherforcast for the next 24 hours: Plenty of Sunshine</span><br><span>Wind: 7km/h SSE; Ther: 21°C; Hum: 82%</span></div>
+        <header>{{title}}</header>
+    </div>
+
+    <div class="subhead">York, MA - Thursday August 30, 1978 - Seven Pages</div><a href="./crawler">Laad nieuwe items</a>
+</div>
+
+<div class="content">
+    <div class="collumns">
+        {{#each articles}}
+        <div class="collumn">
+        <div class="head"><span class="headline hl3">{{this.title}}</span><p><span class="headline hl4">{{this.dc:creator}}</span></p></div>
+            <figure class="figure"><blink>
+			<img class="media" src="{{{this.enclosure.url}}}" alt="">
+			</blink>
+			<figcaption class="figcaption">{{this.title}}</figcaption>
+			</figure>
+            <p>
+            {{{this.content}}}
+            </p>
+			<!-- <a href="{{this.link}}">Lees meer...</a> -->
+			<a href="./item/{{this._id}}">Lees meer...</a>
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+<!-- <div class="content">
+    <div class="collumns">
+        {{#each items}}
+        <div class="collumn">
+        <div class="head"><span class="headline hl{{this.random}}">{{this.title}}</span><p><span class="headline hl{{this.random2}}">{{this.enclosure.}}</span>{{{this.content}}}<br><a href="{{this.link}}">Read more...</a></p></div>
+            <p>
+            {{{this.body}}}
+            </p></div>
+        {{/each}}
+    </div>
+</div> -->

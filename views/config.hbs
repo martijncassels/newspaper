@@ -1,0 +1,63 @@
+{{#if userlist}}
+<table>
+{{#each userlist}}
+<tr><td>{{this.user}}</td>
+<td><a href="/config/{{this.user}}">select user</a></td>
+<td><a href="/config/delete/{{this._id}}">delete user</a></td>
+</tr>
+{{/each}}
+</table>
+{{/if}}
+
+{{#if config}}
+<h4>{{msg}}</h4>
+<a href="/config">list</a>
+<hr>
+<form action="/config/update/{{config._id}}" method="post">
+    <div>
+        <input type="hidden" value="{{config._id}}">
+        <label for="user">Username:</label>
+        <input type="text" id="user" name="user" value="{{config.user}}">
+    </div>
+    {{#with config.feed as |feed|}}
+    {{#each feed}}
+    <div>
+        <label for="feedtitle">Feed title {{@index}}:</label>
+        <input type="text" id="feedtitle" name="feedtitle" value="{{this.title}}">
+    </div>
+    <div>
+        <label for="feedurl">Feed URL {{@index}}:</label>
+        <input type="text" id="feedurl" name="feedurl" value="{{this.url}}">
+    </div>
+    {{/each}}
+    {{/with}}
+    <div>
+        <label for="feedtitle_new">Feed title new:</label>
+        <input type="text" id="feedtitle_new" name="feedtitle_new" value="">
+    </div>
+    <div>
+        <label for="feedurl_new">Feed URL new:</label>
+        <input type="text" id="feedurl_new" name="feedurl_new" value="">
+    </div>
+    <button type="submit" value="Submit">Submit</button>
+</form>
+
+{{else}}
+<h4>{{msg}}</h4>
+<hr>
+<form action="/config/new" method="post">
+    <div>
+        <label for="user">Username:</label>
+        <input type="text" id="user" name="user" value="">
+    </div>
+    <div>
+        <label for="title">Feed title:</label>
+        <input type="text" id="feedtitle" name="feedtitle" value="">
+    </div>
+    <div>
+        <label for="url">Feed URL:</label>
+        <input type="text" id="feedurl" name="feedurl" value="">
+    </div>
+    <button type="submit" value="Submit">Submit</button>
+</form>
+{{/if}}
